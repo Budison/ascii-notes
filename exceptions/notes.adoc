@@ -151,3 +151,22 @@ try {
     // catches something, hence execution here
 }
 ----
+
+== Operations
+
+.Message
+[source,java]
+----
+Exception e1 = new Exception();
+Exception e2 = new Exception("Custom message");
+e1.getMessage();    // returns null
+e2.getMessage();    / returns "Custom message"
+----
+
+.Exception with nested cause
+[source,java]
+----
+MyException e1 = new MyException("Something");
+Exception e2 = new Exception("Something else", e1);
+MyException e3 = (MyException) e2.getCause();
+----
