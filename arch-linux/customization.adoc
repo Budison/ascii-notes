@@ -1,0 +1,43 @@
+= Settings
+:Author:    Kevin Nowak
+:Email:     <nowakk96@icloud.com>
+:Date:      May 20th, 2022
+
+This is a list of things for customizing Arch linux.
+
+== Terminal prompt
+
+**Git status indicator for Typewritten prompt theme**
+
+[source, bash]
+--
+git config --global --add oh-my-zsh.hide-status 1
+--
+
+**No weird letter behavior in terminal anymore**
+
+.Add to `.zshrc` file:
+[source, bash]
+--
+export LC_ALL=en_US.UTF-8
+--
+
+**Path to fonts folder**
+
+[source, bash]
+--
+/usr/local/share/fonts/
+├── otf
+│   └── SourceCodeVariable
+│       ├── SourceCodeVariable-Italic.otf
+│       └── SourceCodeVariable-Roman.otf
+└── ttf
+    ├── AnonymousPro
+    │   ├── Anonymous-Pro-B.ttf
+    │   ├── Anonymous-Pro-I.ttf
+    │   └── Anonymous-Pro.ttf
+    └── CascadiaCode
+        ├── CascadiaCode-Bold.ttf
+        ├── CascadiaCode-Light.ttf
+        └── CascadiaCode-Regular.ttf
+--

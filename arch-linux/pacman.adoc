@@ -1,0 +1,71 @@
+= Commands for package management
+:Author:    Kevin Nowak
+:Email:     <nowakk96@icloud.com>
+:Date:      May 20th, 2022
+
+This is a list of useful commands for managing packages on my arch machine.
+
+[quote, Gapo The Flow, www.stackoverflow.com]
+____
+If it ain't broken, fix it until it is. Then  start over again.
+____
+
+== Commands
+
+**List all explicitly installed packages form pacman**
+
+[source, bash]
+--
+sudo pacman -Qe
+--
+
+**List all locally installed packages from AUR**
+
+[source, bash]
+--
+sudo pacman -Qe
+--
+
+**Update packages**
+
+[source, bash]
+--
+sudo pacman -Sy
+--
+
+**Upgrade packages**
+
+[source, bash]
+--
+sudo pacman -Syu
+--
+
+**Update and upgrade packages**
+
+[source, bash]
+--
+sudo pacman -Syyu
+--
+
+**Install package from pacman**
+
+[source, bash]
+--
+sudo pacman -S <package-name>
+--
+
+**Install package from AUR**
+
+[source, bash]
+--
+tar xfv <tar-package-name>
+cd <package-name>
+makepkg -si
+--
+
+**Remove package**
+
+[source, bash]
+--
+sudo pacman -Rsn <package-name>
+--

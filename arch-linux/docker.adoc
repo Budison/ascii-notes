@@ -1,0 +1,13 @@
+= Settings
+:Author:    Kevin Nowak
+:Email:     <nowakk96@icloud.com>
+:Date:      May 24th, 2022
+
+This is a list of things regarding Docker.
+
+**Run docker daemon**
+
+[source, bash]
+--
+sudo systemctl start docker
+--

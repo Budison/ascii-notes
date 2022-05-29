@@ -1,0 +1,52 @@
+= Settings
+:Author:    Kevin Nowak
+:Email:     <nowakk96@icloud.com>
+:Date:      May 20th, 2022
+
+This is a list of commands for changing some settings on my arch machine.
+
+== Commands
+
+**Lock the screen**
+
+[source, bash]
+--
+dm-tool lock
+--
+
+**Change screen brightness**
+
+[source, bash]
+--
+echo 12000 > /sys/class/backlight/intel_backlight/brightness
+
+# Max. is 19200
+--
+
+**Show battery percentage**
+
+[source, bash]
+--
+acpi
+--
+
+**Start SSH agent**
+
+[source, bash]
+--
+eval $(ssh-agent)
+--
+
+**Add key to SSH agent**
+
+[source, bash]
+--
+ssh-add ~/.ssh/id_ed25519
+--
+
+**Connect to the Wi-Fi**
+
+[source, bash]
+--
+nmcli dev wifi con EPAMemployees password Wi2177785Fi
+--

@@ -1,0 +1,153 @@
+== FinallyShowcase
+
+.Finally with expected exception
+[source,java]
+----
+try {
+    // throws RuntimeException
+} catch (RuntimeException e) {
+    // catches RuntimeException
+} finally {
+    // will always execute
+}
+----
+
+.Finally with unexpected exception
+[source,java]
+----
+try {
+    try {
+        // throws IndexOutOfBoundsException
+    } catch (ArithmeticException e) {
+        // nothing to catch
+    } finally {
+        // will always execute
+    }
+} catch (IndexOutOfBoundsException e) {
+    // catches IndexOutOfBoundsException
+}
+----
+
+.Exception from finally with expected from try
+[source,java]
+----
+try {
+    try {
+        // throws IndexOutOfBoundsException
+    } catch (IndexOutOfBoundsException e) {
+        // catches IndexOutOfBoundsException
+    } finally {
+        // will always execute
+        // throws ArithmeticException
+    }
+} catch (ArithmeticException e) {
+    // catches ArithmeticException
+}
+----
+
+.Exception from finally with unexpected from try
+[source,java]
+----
+try {
+    try {
+        // throws IllegalStateException
+    } catch (IndexOutOfBoundsException e) {
+        // nothing to catch
+    } finally {
+        // will always execute
+        // throws ArithmeticException
+        // IllegalStateException from try-block will be swallowed
+    }
+} catch (ArithmeticException e) {
+    // catches ArithmeticException
+}
+----
+
+== MiscShowcase
+
+.Exception in catch-block without finally
+[source,java]
+----
+try {
+    try {
+        // throws RuntimeException
+    } catch (RuntimeException e) {
+        // catches RuntimeException
+        // throws new RuntimeException
+    }
+} catch (RuntimeException e) {
+    // catches RuntimeException
+}
+----
+
+.Exception in catch-block with finally
+[source,java]
+----
+try {
+    try {
+        // throws RuntimeException
+    } catch (RuntimeException e) {
+        // catches RuntimeException
+        // throws new RuntimeException
+    } finally {
+        // will always execute
+        // even when previous catch-block throws it's own exception
+    }
+} catch (RuntimeException e) {
+    // catches RuntimeException from catch-block
+}
+----
+
+.Return in finally block with unexpected exception
+[source,java]
+----
+try {
+    // throws ArithmeticException
+} catch (IndexOutOfBoundsException) {
+    // catches nothing, hence no execution here
+    // would throw new IllegalStateException
+} finally {
+    // has return statement
+    // this swallows the exception from try-block
+    // without the return statement the exception would be propagated to the caller
+}
+----
+
+.Try finally without catch
+[source,java]
+----
+try {
+    try {
+        // throws RuntimeException
+    } finally {
+        // will always execute
+        // RuntimeExecution will be propagated to the caller
+    }
+} catch (RuntimeException) {
+    // catches the RuntimeException from ealier
+}
+----
+
+== Multicatch
+
+.With multiple catch-blocks
+[source,java]
+----
+try {
+    // throws RuntimeException
+} catch (IndexOutOfBoundsException) {
+    // catches nothing, hence no execution here
+} catch (RuntimeException) {
+    // catches RuntimeException, hence execution here
+}
+----
+
+.Multi-catching with single catch-block
+[source,java]
+----
+try {
+    // throws RuntimeException
+} catch (IndexOutOfBoundsException | RuntimeException e) {
+    // catches something, hence execution here
+}
+----
